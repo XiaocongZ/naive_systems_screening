@@ -17,6 +17,8 @@ file_get_contents(const char* path)
 	fseek(file, 0, SEEK_SET);
 	buffer = malloc(size + 1);
 	fread(buffer, 1, size, file);
+	//patch
+	buffer[size] = '\0';
 	fclose(file);
 	return buffer;
 }

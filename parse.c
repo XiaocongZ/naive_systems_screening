@@ -2,7 +2,11 @@
 #include <string.h>
 #include <stdio.h>
 #include "parse.h"
-
+/*
+only allocate mem for params
+key value are in place(in truncated part of url)
+TODO free mem
+*/
 int
 parse_query_string(char* url, struct query_parameter** out)
 {
@@ -38,7 +42,6 @@ parse_query_string(char* url, struct query_parameter** out)
 			goto error;
 		}
 		else{
-
 			query_k = query_string;
 			query_v = equal_sign + 1;
 			*equal_sign = '\0';
@@ -57,11 +60,7 @@ parse_query_string(char* url, struct query_parameter** out)
 			query_string = ep;
 		}
 	}
-	/*
-	query_parameter* query;
-	query = malloc(sizeof(query_parameter));
-	free(query);
-	*/
+
 	return parameter_count;
 
 error:
