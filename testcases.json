@@ -21,6 +21,15 @@
 				"t": "h_",
 				"ia": "web"
 			}
+		},
+		{
+			"input": "https://duckduckgo.com/",
+			"output": {}
+		},
+		{
+			"input": "https://duckduckgo.com/?",
+			"output": {}
 		}
+
 	]
 }

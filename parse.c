@@ -50,7 +50,7 @@ parse_query_string(char* url, struct query_parameter** out)
 			struct query_parameter *query = *out + parameter_count;
 			query->name = query_k;
 			query->value = query_v;
-			printf("name %s value %s\n", query_k, query_v);
+			
 			parameter_count++;
 		}
 		if(*ep == '&'){

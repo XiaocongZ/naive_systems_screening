@@ -39,6 +39,16 @@ cJSON_GetObjectSize(const cJSON* object)
 	cJSON_Delete(json);					\
 	return 1;						\
 } while (0)
+//patch
+#define free_return_error() do {		\
+	if(url != NULL){		\
+		free(url);		\
+	}		\
+	if(params != NULL){		\
+		free(params);		\
+	}		\
+	return_error();		\
+} while (0)
 
 int
 main(void)
@@ -75,7 +85,7 @@ main(void)
 
 		printf("\ncount %d\n", count);
 		if (count != cJSON_GetObjectSize(output)) {
-			return_error();
+			free_return_error();
 		}
 		for (int i = 0; i < count; i++) {
 			const cJSON* json_value;
@@ -83,12 +93,20 @@ main(void)
 			printf("[%s] = %s\n", params[i].name, params[i].value);
 			json_value = cJSON_GetObjectItem(output, params[i].name);
 			if (!cJSON_IsString(json_value)) {
-				return_error();
+				free_return_error();
 			}
 			if (strcmp(json_value->valuestring, params[i].value) != 0) {
-				return_error();
+				free_return_error();
 			}
 		}
+		//patch
+		if(url != NULL){
+			free(url);
+		}
+		if(params != NULL){
+			free(params);
+		}
+
 		printf("OK\n\n");
 	}
 	cJSON_Delete(json);
