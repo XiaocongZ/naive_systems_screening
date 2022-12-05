@@ -15,6 +15,20 @@
 			}
 		},
 		{
+			"input": "https://bbs.csdn.net/forums/FreeZone?page=",
+			"output": {
+				"page": ""
+			}
+		},
+		{
+			"input": "https://bbs.csdn.net/forums/FreeZone?=pag=e=3",
+			"output": {}
+		},
+		{
+			"input": "https://bbs.csdn.net/forums/FreeZone?page3",
+			"output": {}
+		},
+		{
 			"input": "https://duckduckgo.com/?q=c+programming+language&t=h_&ia=web",
 			"output": {
 				"q": "c+programming+language",
@@ -27,9 +41,15 @@
 			"output": {}
 		},
 		{
-			"input": "https://duckduckgo.com/?",
+			"input": "https://duckduckgo.com/?abcd?",
 			"output": {}
+		},
+		{
+			"input": "https://duckduckgo.com/?q=c+programming+language&t=h_",
+			"output": {
+				"q": "c+programming+language",
+				"t": "h_"
+			}
 		}
-
 	]
 }
